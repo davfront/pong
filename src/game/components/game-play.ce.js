@@ -20,22 +20,34 @@ const template = `
         <div class="gamePlay-touchBtn is-playerLeft is-up">
           <ui-icon name="arrow-up"></ui-icon>
         </div>
-        <game-player class="gamePlay-player-left"></game-player>
+        <div class="gamePlay-player">
+          <game-player class="gamePlay-player-left"></game-player>
+          <div class="gamePlay-player-controls is-playerLeft">
+            <kbd class="gamePlay-key">W</kbd>
+            <kbd class="gamePlay-key">S</kbd>
+          </div>
+        </div>
         <div class="gamePlay-touchBtn is-playerLeft is-down">
-        <ui-icon name="arrow-down"></ui-icon>
-      </div>
+          <ui-icon name="arrow-down"></ui-icon>
+        </div>
       </div>
       <div class="gamePlay-body-center">
         <game-renderer-3d class="gamePlay-renderer"></game-renderer-3d>
       </div>
       <div class="gamePlay-body-right">
         <div class="gamePlay-touchBtn is-playerRight is-up">
-        <ui-icon name="arrow-up"></ui-icon>
-      </div>
-        <game-player class="gamePlay-player-right"></game-player>
+          <ui-icon name="arrow-up"></ui-icon>
+        </div>
+        <div class="gamePlay-player">
+          <game-player class="gamePlay-player-right"></game-player>
+          <div class="gamePlay-player-controls is-playerRight">
+            <kbd class="gamePlay-key">↑</kbd>
+            <kbd class="gamePlay-key">↓</kbd>
+          </div>
+        </div>
         <div class="gamePlay-touchBtn is-playerRight is-down">
-        <ui-icon name="arrow-down"></ui-icon>
-      </div>
+          <ui-icon name="arrow-down"></ui-icon>
+        </div>
       </div>
     </div>
     <div class="gamePlay-footer">
@@ -122,11 +134,17 @@ class GamePlay extends HTMLElement {
       this.querySelectorAll('.gamePlay-touchBtn.is-playerLeft').forEach(el => {
         el.hidden = true;
       });
+      this.querySelectorAll('.gamePlay-player-controls.is-playerLeft').forEach(el => {
+        el.classList.add('invisible');
+      });
     }
     if (this.#playerRight.type === 'ai') {
       this.#playerRightKeys = [];
       this.querySelectorAll('.gamePlay-touchBtn.is-playerRight').forEach(el => {
         el.hidden = true;
+      });
+      this.querySelectorAll('.gamePlay-player-controls.is-playerRight').forEach(el => {
+        el.classList.add('invisible');
       });
     }
 

@@ -1,0 +1,26 @@
+.halo-bicolor {
+  --halo-bicolor-bg-rgb: var(--bs-body-bg-rgb);
+
+  background-color: rgba(var(--halo-bicolor-bg-rgb), 1);
+  background-image: radial-gradient(
+      circle at 50% 50%,
+      rgba(var(--halo-bicolor-bg-rgb), 0) 0%,
+      rgba(var(--halo-bicolor-bg-rgb), 1) 100%
+    ),
+    linear-gradient(to right, rgba(var(--bs-primary-rgb), 0.2) 0%, rgba(var(--bs-secondary-rgb), 0.2) 100%);
+  background-attachment: fixed;
+}
+
+.bg-bicolor {
+  background: linear-gradient(to right, $primary, $secondary) !important;
+}
+
+.bg-bicolor-diagonal {
+  background: linear-gradient(120deg, $primary, $secondary) !important;
+}
+
+.text-bicolor {
+  background: linear-gradient(to right, $primary, $secondary) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
